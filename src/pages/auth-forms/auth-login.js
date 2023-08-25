@@ -35,6 +35,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import Google from '../../assets/images/icons/social-google.svg';
+import { HOST } from '../../config';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -52,7 +53,7 @@ const FirebaseLogin = ({ ...others }) => {
     useEffect(() => {
         const loadOauthUrl =async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/google/url`);
+                const response = await axios.get(`${HOST}api/google/url`);
                 const {url } = response.data;
                 setGoogleOauthUrl(url);
                 if(googleOauthUrl)
@@ -155,7 +156,7 @@ const FirebaseLogin = ({ ...others }) => {
                             setSubmitting(false);
 
 
-                            const response =await axios.post('http://localhost:8080/api/login',{
+                            const response =await axios.post(`${HOST}api/login`,{
                                 email: values.email,
                                 password : values.password
                             });

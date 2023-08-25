@@ -1,12 +1,13 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import axios from "axios"
 import { useEffect, useState } from "react";
+import { HOST } from "../../../config";
 
 export default function SubjectPage ( props ){
     const [chapterName ,setChapterName ]=useState([]);
     const requestAllStandards = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/get-chapters',{
+            const response = await axios.post(`${HOST}api/get-chapters`,{
                 subjectCode : props.subjectCode
             });
             if (response.status === 200) {

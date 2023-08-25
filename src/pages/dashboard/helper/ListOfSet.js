@@ -1,13 +1,14 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import axios from "axios"
 import { useEffect, useState } from "react";
+import { HOST } from "../../../config";
 
 export default function ListOfSet ( props ){
     const [sets, setSets] = useState();
     
     const requestAllStandards = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/get-sets-list',{
+            const response = await axios.post(`${HOST}api/get-sets-list`,{
                 subjectCode : props.subjectCode,
                 chapterNameIndex : props.chapterNameIndex
             });

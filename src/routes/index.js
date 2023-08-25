@@ -39,9 +39,9 @@ export default function Router() {
             children: [
                 { element: <Navigate to="/dashboard/app" />, index: true },
                 { path: 'app', element: <DashboardAppPage /> },
-                { path: 'standard-exams', element: <StandardExam /> },
-                { path: 'competitive-exams', element: <StandardExam /> },
-                { path: 'entrance-exams', element: <StandardExam /> },                
+                { path: 'standard-exams', element: <StandardExam />},
+                { path: 'competitive-exams', element: <Demo /> },
+                { path: 'entrance-exams', element: <Demo /> },                
             ],
         },
         {

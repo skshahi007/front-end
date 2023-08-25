@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { useUser } from "../../auth/useUser";
 import AllStandard from "../helper/AllStandard";
+import { HOST } from "../../../config";
 
 export default function StandardExams() {
   const guruUser = useUser();
@@ -14,7 +15,7 @@ export default function StandardExams() {
 
   const handleCreateNewRow = async (values) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/add-course-name', {
+      const response = await axios.post(`${HOST}api/add-course-name`, {
         name: values,
         addedById: id
       });

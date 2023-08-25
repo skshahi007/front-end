@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import axios from "axios";
 import { useState } from "react";
 import { useUser } from '../auth/useUser';
+import { HOST } from "../../config";
 
 
 export default function AddQuestions() {
@@ -61,7 +62,7 @@ export default function AddQuestions() {
                   setStatus({ success: false });
                   setSubmitting(false);
                   
-                  const response= await axios.post('http://localhost:8080/api/update-question',{
+                  const response= await axios.post(`${HOST}api/update-question`,{
                     standard : values.standard,
                     subject : values.subject,
                     chapterName : values.chapterName,
@@ -81,7 +82,7 @@ export default function AddQuestions() {
                   console.log(response);
 
                   if(response.status===200){
-console.log("hello",response.status);
+
                     setInitialValues( {
                       standard : values.standard,
                       subject : values.subject,

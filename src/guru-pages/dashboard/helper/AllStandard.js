@@ -4,6 +4,7 @@ import axios from "axios";
 import { AddNewSubject } from "./AddNewSubject";
 import { useUser } from "../../auth/useUser";
 import DataTable from "./TableList";
+import { HOST } from "../../../config";
 
 export default function AllStandard() {
   const guruUser = useUser();
@@ -30,7 +31,7 @@ export default function AllStandard() {
   }
   const handleCreateNewRow = async (subjectName, chapterNames) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/add-subject-name', {
+      const response = await axios.post(`${HOST}api/add-subject-name`, {
         subjectName,
         chapterNames,
         courseCode: course.courseCode,
@@ -48,7 +49,7 @@ export default function AllStandard() {
   };
   const requestAllStandards = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/get-standards');
+      const response = await axios.get(`${HOST}api/get-standards`);
       if (response.status === 200) {
         setValues(response.data);
       }

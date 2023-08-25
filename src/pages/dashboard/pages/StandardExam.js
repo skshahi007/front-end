@@ -1,6 +1,7 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { HOST } from "../../../config";
 import ListOfSet from "../helper/ListOfSet";
 import PracticePage from "../helper/PracticePage";
 import SubjectPage from "../helper/SubjectPage";
@@ -20,7 +21,7 @@ export default function StandardExam() {
 
     const requestAllStandards = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/get-standards');
+            const response = await axios.get(`${HOST}api/get-standards`);
             if (response.status === 200) {
                 setValues(response.data);
             }

@@ -3,6 +3,7 @@ import { StayPrimaryLandscape } from "@mui/icons-material";
 import { Button, Card, CardContent, FormControl, FormControlLabel, FormLabel, ListItem, Paper, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import axios from "axios"
 import { useEffect, useState } from "react";
+import { HOST } from "../../../config";
 
 export default function PracticePage(props) {
     const [disabledOnPrevButton, setOnPrevButton] = useState(true);
@@ -30,7 +31,7 @@ export default function PracticePage(props) {
 
 
         try {
-            const response = await axios.post('http://localhost:8080/api/get-question', {
+            const response = await axios.post(`${HOST}api/get-question`, {
                 _id: id,
                 subjectCode: props.setsValues.subjectCode
             });

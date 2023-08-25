@@ -13,6 +13,7 @@ import {
 import { Delete, Edit } from '@mui/icons-material';
 import { AddNewQuestions } from "./AddNewQuestion";
 import { AddSet } from "./AddSet";
+import { HOST } from "../../../config";
 
 
 
@@ -32,7 +33,7 @@ export default function DataTable(props) {
   const addNewSet = async (values) => {
     
     
-    const response = await axios.post('http://localhost:8080/api/add-set', {
+    const response = await axios.post(`${HOST}api/add-set`, {
 
       questionList,
       values,
@@ -52,7 +53,7 @@ export default function DataTable(props) {
     }
     try {
 
-      const response = await axios.post(`http://localhost:8080/api/add-question`, {
+      const response = await axios.post(`${HOST}api/add-question`, {
         values,
         subjectCode: props.subjectCode
       });
@@ -74,7 +75,7 @@ export default function DataTable(props) {
 
       //send/receive api updates here, then refetch or update local table data for re-render
       try {
-        const response = await axios.put('http://localhost:8080/api/update-question', {
+        const response = await axios.put(`${HOST}api/update-question`, {
 
           values,
           subjectCode: props.subjectCode
@@ -106,7 +107,7 @@ export default function DataTable(props) {
       //send api delete request here, then refetch or update local table data for re-render
       try {
         console.log(row.original);
-        const response = await axios.put('http://localhost:8080/api/delete-question', {
+        const response = await axios.put(`${HOST}api/delete-question`, {
           _id: `${row.getValue('_id')}`,
           subjectCode: props.subjectCode
         });
@@ -248,11 +249,11 @@ export default function DataTable(props) {
   
   const requestData = async () => {
     try {
-      const respond = await axios.post('http://localhost:8080/api/get-chapters', { subjectCode: props.subjectCode })
+      const respond = await axios.post(`${HOST}api/get-chapters`, { subjectCode: props.subjectCode })
       if (respond.status === 200) {
         setChapterNames(respond.data);
       }
-      const response = await axios.post('http://localhost:8080/api/get-questions', {
+      const response = await axios.post(`${HOST}api/get-questions`, {
         id: user.id,
         email: user.email,
         subjectCode: props.subjectCode

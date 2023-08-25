@@ -36,6 +36,7 @@ import { strengthColor, strengthIndicator } from '../../utils/password-strength'
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { HOST } from '../../config';
 
 // ===========================|| FIREBASE - REGISTER ||=========================== //
 
@@ -99,7 +100,7 @@ const FirebaseRegister = ({ ...others }) => {
                             console.log("s1");
                             setStatus({ success: true });
                             setSubmitting(false);
-                            const response= await axios.post('http://localhost:8080/api/admin-signup',{
+                            const response= await axios.post(`${HOST}api/admin-signup`,{
                                 name : {
                                     firstName : values.fname,
                                     lastName : values.lname,
